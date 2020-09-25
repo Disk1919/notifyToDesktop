@@ -1,0 +1,22 @@
+version: '3'
+services:
+  web:
+    build: 
+      context: ./web
+      dockerfile: dockerFile
+    volumes:
+      - ../web:/usr/var/web
+    ports:
+      - 80:80
+    working_dir: /usr/var/web
+    tty: true
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: dockerFile
+    volumes:
+      - ../backend:/usr/var/backend
+    working_dir: /usr/var/backend
+    ports:
+      - 8080:8080
+    tty: true
